@@ -1,17 +1,44 @@
-<?php
-$username = $_POST['username'];
+<?php 
+
+require 'phpmailer/PHPMailerAutoload.php';
+$mail = new PHPMailer;
+$mail->CharSet = 'utf-8';
+
+$name = $_POST['username'];
+$phone = $_POST['phone'];
 $email = $_POST['email'];
-$fio = htmlspecialchars($fio);
-$email = htmlspecialchars($email);
-$username = urldecode($username);
-$email = urldecode($email);
-$username = trim($username);
-$email = trim($email);
-//echo $fio;
-//echo "<br>";
-//echo $email;
-if (mail("s.rud@factor.ua", "Заявка с сайта", "ФИО:".$username.". E-mail: ".$email ,"From: stanislavrud1990@gmail.com \r\n"))
- {     echo "сообщение успешно отправлено";
+$comment = $_POST['comment'];
+
+//$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'dethmetal2020@gmail.com'; // Ваш логин от почты с которой будут отправляться письма
+$mail->Password = 'Ho4uZarab0tatDeneg!'; // Ваш пароль от почты с которой будут отправляться письма
+$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
+
+$mail->setFrom('dethmetal2020@gmail.com'); // от кого будет уходить письмо?
+$mail->addAddress('rudstanislav1990@gmail.com');     // Кому будет уходить письмо 
+//$mail->addAddress('ellen@example.com');               // Name is optional
+//$mail->addReplyTo('info@example.com', 'Information');
+//$mail->addCC('cc@example.com');
+//$mail->addBCC('bcc@example.com');
+//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+$mail->isHTML(true);                                  // Set email format to HTML
+
+$mail->Subject = 'Заявка с тестового сайта';
+$mail->Body    = '<br>оставил заявку ' .$name . 
+				'<br>Телефон ' .$phone . 
+				'<br>Почта пользователя: ' .$email . 
+				'<br> Комментарий ' .$comment .
+$mail->AltBody = '';
+
+if(!$mail->send()) {
+    echo 'Error';
 } else {
-    echo "при отправке сообщения возникли ошибки";
-}?>
+    header('location: //localhost/index.html');
+}
+?>
