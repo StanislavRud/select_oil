@@ -32,11 +32,11 @@ let addClassActive = () => {
 
 }
 
-let contactMe = () => {
-    window.location.hash='#contact';
-}
-
-document.querySelector('button.contactMe').addEventListener('click', contactMe);
+// let contactMe = () => {
+//     window.location.hash='#contact';
+// }
+//
+// document.querySelector('button.contactMe').addEventListener('click', contactMe);
 
 activeToggleMenu.addEventListener("click", addClassActive);
 
