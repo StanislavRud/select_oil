@@ -37,7 +37,7 @@ $mail->Body    = '<br>оставил заявку ' .$name .
 $mail->AltBody = '';
 
 if(!$mail->send()) {
-    echo 'Error';
+    echo 'Упс что то не сработало... пожалуйста позвоните или напишите в Telegram по номеру 067-146-86-57, Спасибо!';
 } else {
     header('location: //localhost/index.html');
 }

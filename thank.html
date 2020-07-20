@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/thank.style.css">
+    <title>Thank You</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper_inner">
+            <h1>Ваша заявка отправлена</h1>
+            <p>Спасибо Вам за заявку!</p>
+            <p>В ближайшее время, наш менеджер свяжется с Вами!</p>
+            <p>Хорошего Вам дня!</p>
+            <button class="to_main">На главную</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.to_main').addEventListener('click', function () {
+            window.location.href = '//localhost/index.html';
+        });
+        setTimeout(function(){
+            window.location.href = '//localhost/index.html';
+        }, 7000);
+    </script>
+</body>
+</html>
